@@ -31,6 +31,7 @@ if __name__ == "__main__":
         'Authorization': f"Bearer {API_KEY}"
     }
     r = requests.get("https://jedi.enterprise.corellium.com/api/v1/instances", headers=headers)
+    logger.info(r.status_code)
     if r.status_code == 200:
         data = r.json()
         device_name = data[0]['name']
