@@ -17,7 +17,7 @@ logger_file_handler.setFormatter(formatter)
 logger.addHandler(logger_file_handler)
 
 try:
-    API_KEY = os.environ["CORELLIUM_TOKEN"]
+    API_KEY = ${{ secrets.CORELLIUM_TOKEN }}
 except KeyError:
     API_KEY = "Token not available!"
     #logger.info("Token not available!")
@@ -26,8 +26,11 @@ except KeyError:
 
 if __name__ == "__main__":
     logger.info(f"Token value: {API_KEY}")
-
-    r = requests.get("https://jedi.enterprise.corellium.com/api/v1/instances")
+    
+    headers = {
+        'Authorization': f"Bearer {API_Key}"
+    }
+    r = requests.get("https://jedi.enterprise.corellium.com/api/v1/instances", headers=headers)
     if r.status_code == 200:
         data = r.json()
         device_name = data[0]['name']
