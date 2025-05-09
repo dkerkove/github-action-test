@@ -28,7 +28,7 @@ if __name__ == "__main__":
     logger.info(f"Token value: {API_KEY}")
     
     headers = {
-        'Authorization': f"Bearer {API_Key}"
+        'Authorization': f"Bearer {API_KEY}"
     }
     r = requests.get("https://jedi.enterprise.corellium.com/api/v1/instances", headers=headers)
     if r.status_code == 200:
