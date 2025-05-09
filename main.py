@@ -17,7 +17,7 @@ logger_file_handler.setFormatter(formatter)
 logger.addHandler(logger_file_handler)
 
 try:
-    API_KEY = ${{ secrets.CORELLIUM_TOKEN }}
+    API_KEY = os.environ["API_KEY"]
 except KeyError:
     API_KEY = "Token not available!"
     #logger.info("Token not available!")
